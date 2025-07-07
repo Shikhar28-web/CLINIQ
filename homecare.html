@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Care Remedies - clinIQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .remedy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .remedy-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .remedy-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0,150,136,0.2);
+    }
+    .remedy-card img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .remedy-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: var(--white);
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 700px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,150,136,0.3);
+    }
+    .close-btn {
+      color: var(--secondary-color);
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .modal-content img {
+      width:auto;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .modal-content h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .modal-content p {
+      margin-bottom: 0.75rem;
+      color: var(--text-color);
+    }
+    .modal-content strong {
+      color: var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">clinIQ</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="appointment.html">Book Appointment</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 style="text-align:center; margin-top: 2rem; color: var(--secondary-color);">Basic Medical Home Remedies</h1>
+    <div class="remedy-grid" id="remedyGrid">
+      <!-- Remedy cards will be inserted here by JS -->
+    </div>
+  </main>
+
+  <!-- Modal for remedy details -->
+  <div id="remedyModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">&times;</button>
+      <img id="modalImage" src="" alt="Remedy Image" />
+      <h2 id="modalName"></h2>
+      <p><strong>How to Use:</strong> <span id="modalUsage"></span></p>
+      <p><strong>Age Group:</strong> <span id="modalAge"></span></p>
+      <p><strong>Disorders:</strong> <span id="modalDisorders"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const remedies = [
+      {
+        name: "Honey for Cough",
+        image: "https://th.bing.com/th/id/OIP.6Vd-BvmXkzgVHoloVSYZMwHaE8?w=273&h=183&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Take 1-2 teaspoons of honey 2-3 times a day to soothe cough.",
+        ageGroup: "Adults and children over 1 year",
+        disorders: "Cough, sore throat"
+      },
+      {
+        name: "Ginger Tea",
+        image: "https://th.bing.com/th/id/OIP.tm9cs9dKeOYfG_SIi0xUNAHaIV?w=148&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Boil fresh ginger slices in water and drink 2-3 times daily.",
+        ageGroup: "All ages",
+        disorders: "Nausea, digestion issues, cold"
+      },
+      {
+        name: "Turmeric Milk",
+        image: "https://th.bing.com/th/id/OIP.1rxFubPqRNu69oWld6QggAHaHa?w=188&h=187&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Add 1 teaspoon turmeric powder to warm milk and drink before bed.",
+        ageGroup: "Adults",
+        disorders: "Inflammation, cold, cough"
+      },
+      {
+        name: "Aloe Vera Gel",
+        image: "https://th.bing.com/th/id/OIP.MKT7VlubsnrKxJX2_1wqaQHaE8?w=276&h=184&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Apply fresh aloe vera gel on skin to soothe burns and wounds.",
+        ageGroup: "All ages",
+        disorders: "Burns, skin irritation"
+      },
+      {
+        name: "Peppermint Oil",
+        image: "https://th.bing.com/th/id/OIP.zOm4_xbkWmmrhMJaHlevCAHaFw?w=333&h=206&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Dilute peppermint oil and apply on temples for headache relief.",
+        ageGroup: "Adults",
+        disorders: "Headache, migraine"
+      },
+      {
+        name: "Garlic",
+        image: "https://th.bing.com/th/id/OIP.k6WA9omQScWvyPwYAxL0zgHaE8?w=287&h=192&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Consume raw or cooked garlic daily to boost immunity.",
+        ageGroup: "Adults",
+        disorders: "Cold, infections"
+      },
+      {
+        name: "Chamomile Tea",
+        image: "https://th.bing.com/th/id/OIP._M5nogAZqNVeUltQFurLMgHaE8?w=261&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Drink chamomile tea before bedtime to promote sleep.",
+        ageGroup: "All ages",
+        disorders: "Insomnia, anxiety"
+      },
+      {
+        name: "Eucalyptus Steam",
+        image: "https://th.bing.com/th/id/OIP.5OpUmESvxd6a5mGOp-XJOgHaEJ?w=309&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Add eucalyptus oil to hot water and inhale steam for congestion relief.",
+        ageGroup: "Adults and children over 5 years",
+        disorders: "Cold, congestion"
+      },
+      {
+        name: "Lemon Water",
+        image: "https://th.bing.com/th/id/OIP.vwmvtx5nt1dFxJwwwcctyAHaE8?w=264&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Drink warm lemon water in the morning to detoxify.",
+        ageGroup: "All ages",
+        disorders: "Digestion, hydration"
+      },
+      {
+        name: "Cinnamon",
+        image: "https://th.bing.com/th/id/OIP.nSNt22APiD-FCMtEKIvU4wHaFE?w=244&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Add cinnamon to tea or food to help regulate blood sugar.",
+        ageGroup: "Adults",
+        disorders: "Diabetes, inflammation"
+      },
+      {
+        name: "Basil Leaves",
+        image: "https://th.bing.com/th/id/OIP.s0MBVMT8akwSGYW4S_Fv3gHaE7?w=280&h=186&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Chew fresh basil leaves or drink basil tea for respiratory relief.",
+        ageGroup: "All ages",
+        disorders: "Cold, cough, asthma"
+      },
+      {
+        name: "Apple Cider Vinegar",
+        image: "https://th.bing.com/th/id/OIP.jEF_zbqs_Ucqgz86V1gIRwAAAA?w=175&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Dilute 1-2 tablespoons in water and drink before meals.",
+        ageGroup: "Adults",
+        disorders: "Digestion, weight loss"
+      },
+      {
+        name: "Cold Compress",
+        image: "https://ts3.mm.bing.net/th?id=OIP.Zdf6-syDw_YAqgjUNNhHygHaHa&pid=15.1",
+        usage: "Apply cold compress to reduce swelling and pain.",
+        ageGroup: "All ages",
+        disorders: "Injury, inflammation"
+      },
+      {
+        name: "Warm Salt Water Gargle",
+        image: "https://th.bing.com/th/id/OIP.usmd7IYVqzo8BvD_tyZ-DQHaE8?w=246&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Gargle with warm salt water 2-3 times a day for sore throat relief.",
+        ageGroup: "All ages",
+        disorders: "Sore throat, mouth ulcers"
+      },
+      {
+        name: "Oatmeal Bath",
+        image: "https://th.bing.com/th/id/OIP.F1f7ZSFh9C6wUAzV9slhswHaE8?w=300&h=200&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        usage: "Add oatmeal to bath water to soothe itchy skin.",
+        ageGroup: "All ages",
+        disorders: "Eczema, dry skin"
+      }
+    ];
+
+    const remedyGrid = document.getElementById('remedyGrid');
+    const modal = document.getElementById('remedyModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalName = document.getElementById('modalName');
+    const modalUsage = document.getElementById('modalUsage');
+    const modalAge = document.getElementById('modalAge');
+    const modalDisorders = document.getElementById('modalDisorders');
+
+    function openModal(remedy) {
+      modalImage.src = remedy.image;
+      modalImage.alt = remedy.name;
+      modalName.textContent = remedy.name;
+      modalUsage.textContent = remedy.usage;
+      modalAge.textContent = remedy.ageGroup;
+      modalDisorders.textContent = remedy.disorders;
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Populate remedy cards
+    remedies.forEach(remedy => {
+      const card = document.createElement('div');
+      card.className = 'remedy-card';
+      card.innerHTML = `
+        <img src="${remedy.image}" alt="${remedy.name}" />
+        <div class="remedy-name">${remedy.name}</div>
+      `;
+      card.addEventListener('click', () => openModal(remedy));
+      remedyGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html>

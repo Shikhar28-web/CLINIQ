@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment - clinIQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .appointment-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: var(--white);
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 150, 136, 0.15);
+    }
+    h1 {
+      text-align: center;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    label {
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--accent-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .form-row > div {
+      flex: 1 1 48%;
+      min-width: 48%;
+    }
+    .submit-button {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+    }
+    .submit-button:hover {
+      background-color: var(--secondary-color);
+    }
+    .confirmation-message {
+      text-align: center;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">clinIQ</div>
+    <nav>
+      <a href="index.html" class="cta-nav">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="appointment-container">
+      <h1>Book an Appointment</h1>
+      <form id="appointmentForm" novalidate>
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" required />
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
+
+        <div class="form-row">
+          <div>
+            <label for="phonePrimary">Primary Phone Number *</label>
+            <input type="tel" id="phonePrimary" name="phonePrimary"  placeholder="10-digit number" required />
+          </div>
+          <div>
+            <label for="phoneAdditional">Additional Phone Number</label>
+            <input type="tel" id="phoneAdditional" name="phoneAdditional"  placeholder="10-digit number" />
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Address Details</legend>
+          <div class="form-row">
+            <div>
+              <label for="street">Street *</label>
+              <input type="text" id="street" name="street" required />
+            </div>
+            <div>
+              <label for="city">City *</label>
+              <input type="text" id="city" name="city" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="state">State *</label>
+              <input type="text" id="state" name="state" required />
+            </div>
+            <div>
+              <label for="zip">Zip Code *</label>
+              <input type="text" id="zip" name="zip"  placeholder="5-digit zip" required />
+            </div>
+          </div>
+        </fieldset>
+
+        <label for="medicalField">Medical Field *</label>
+        <select id="medicalField" name="medicalField" required>
+          <option value="" disabled selected>Select a medical field</option>
+          <option value="General Medicine">General Medicine</option>
+          <option value="Pediatrics">Pediatrics</option>
+          <option value="Dermatology">Dermatology</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Orthopedics">Orthopedics</option>
+          <option value="Gynecology">Gynecology</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Psychiatry">Psychiatry</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <div class="form-row">
+          <div>
+            <label for="appointmentDate">Appointment Date *</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required />
+          </div>
+          <div>
+            <label for="appointmentTime">Appointment Time *</label>
+            <input type="time" id="appointmentTime" name="appointmentTime" required />
+          </div>
+        </div>
+
+        <button type="submit" class="submit-button">Book Appointment</button>
+        <p class="confirmation-message" id="confirmationMessage">Thank you! Your appointment has been booked.</p>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Additional custom validation for date/time can be added here if needed
+
+      // Show confirmation message
+      confirmationMessage.style.display = 'block';
+
+      // Optionally, reset the form
+      form.reset();
+    });
+  </script>
+</body>
+</html>
