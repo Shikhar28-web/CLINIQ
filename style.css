@@ -62,7 +62,9 @@ nav a:hover {
 .cta-nav:hover {
   background-color: var(--secondary-color);
 }
-
+a.shi{
+  text-decoration: none;
+}
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);

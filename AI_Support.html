@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLINIQ Medical AI Assistant</title>
+    <link rel="stylesheet" href="ai.css">
+    <!-- Font Awesome for icon (optional, can be removed if not needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="ai-container">
+        <div class="ai-header">
+            <img src="logocut.png" alt="CLINIQ AI Logo" class="ai-logo">
+            <h1>CLINIQ AI Assistant</h1>
+            <p class="ai-tagline">Your futuristic healthcare companion</p>
+        </div>
+        <div id="chat-messages" class="ai-chat-window"></div>
+        <form class="ai-input-area" onsubmit="return false;">
+            <input id="user-input" type="text" placeholder="Type your message..." autocomplete="off">
+            <button id="send-message" type="button"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="ai.js"></script>
+</body>
+</html>
