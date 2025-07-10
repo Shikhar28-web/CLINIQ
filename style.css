@@ -129,19 +129,34 @@ a.shi{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  
 }
 
 .feature-card {
   padding: 2rem;
-  border-radius: 16px;
+  align-items: center;
+  border-radius:auto;
   background-color: var(--background-color);
   text-align: center;
   transition: transform 0.3s ease;
+    
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
 }
+@media (max-width: 768px) {
+  .features-highlight {
+    grid-template-columns: 1fr;
+    display: flex;
+  flex-direction: row;
+  }
+}
+
 
 .feature-card img {
   width: 80px;
