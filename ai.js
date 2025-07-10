@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // For browser, you'll need to set API key differently
     // You could hardcode it (not recommended for production) or use a config
-    const apiKey = 'AIzaSyCfmZWE6lFtJQGMhdTaRMHEkN_zxCJMjDY'; // Replace with your actual key
+    const apiKey = 'AIzaSyCNnzf_7cuS0jcEGoKD2PucaWts2oqDUdk'; // Replace with your actual key
     const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + apiKey;
 
 
