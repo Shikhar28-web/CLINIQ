@@ -1,18 +1,19 @@
 body {
-    background-color:#163424;
+    background-color:#daf8e9;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     width: 100vw;
     font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-    background: #f4fafd;
+
+    
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .ai-container {
-    background: #ffffff;
+    background: #CFFFE2;
     box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.07);
     border-radius: 24px;
     width: 100%;
@@ -22,7 +23,7 @@ body {
     flex-direction: column;
     align-items: stretch;
     padding: 0 0 20px 0;
-    border: 1px solid #e0e7ef;
+    border: 1px solid #CFFFE2;
     margin: 32px;
 }
 
@@ -32,7 +33,7 @@ body {
     align-items: center;
     padding: 28px 0 12px 0;
     border-bottom: 1px solid #e0e7ef;
-    background: #eaf6fb;
+    background: #64E2B7;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
 }
@@ -41,9 +42,8 @@ body {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    box-shadow: 0 2px 8px 0 #b6e2f7;
     margin-bottom: 10px;
-    background: #eeeff8;
+    background: #64E2B7;
     object-fit: cover;
 }
 
@@ -93,7 +93,7 @@ body {
     height: 32px;
     border-radius: 50%;
     margin-right: 8px;
-    background: #84a2af;
+    background: #64E2B7;
     object-fit: cover;
     border: 1px solid #b6e2f7;
 }
@@ -113,7 +113,7 @@ body {
 }
 
 .ai-message-user .ai-message-bubble {
-    background: #d1f7e7;
+    background: #64E2B7;
     color: #163424;
     border: 1px solid #a3e4c7;
     border-radius: 16px 16px 16px 4px;
@@ -121,7 +121,7 @@ body {
 }
 
 .ai-message-bot .ai-message-bubble {
-    background: #eaf6fb;
+    background: #64E2B7;
     color: #2a6fa1;
     border-radius: 16px 16px 4px 16px;
     align-self: flex-start;
@@ -132,7 +132,7 @@ body {
     align-items: center;
     padding: 14px 14px 0 14px;
     border-top: 1px solid #e0e7ef;
-    background: #fff;
+    background: #CFFFE2;
     gap: 8px;
 }
 
@@ -141,7 +141,7 @@ body {
     padding: 10px 14px;
     border-radius: 12px;
     border: 1px solid #b6e2f7;
-    background: #f4fafd;
+    background: #E4EFE7;
     color: #2a6fa1;
     font-size: 1rem;
     outline: none;
@@ -149,7 +149,7 @@ body {
 
 .ai-input-area input[type="text"]{
     background: #eaf6fb;
-    color: #1ebd93;
+    color: black;
 }
 
 .ai-input-area button {

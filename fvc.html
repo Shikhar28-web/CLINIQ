@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Video Call</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fvc.css">
+</head>
+<body>
+    <div class="video-call-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">
+                <h2>clinIQ Connect</h2>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fa-solid fa-home"></i> Home</a>
+                <a href="#"><i class="fa-solid fa-user-doctor"></i> Doctors</a>
+                <a href="appointment.html"><i class="fa-solid fa-calendar"></i> Appointments</a>
+            </div>
+        </nav>
+
+        <!-- Call Status -->
+        <div class="call-status" id="callStatus">
+            Connected to Doctor
+        </div>
+
+        <!-- Screen Share Preview -->
+        <div class="screen-share-preview" id="screenSharePreview">
+            <video id="screenPreviewVideo" autoplay muted playsinline></video>
+            <button class="close-preview" id="closeScreenShare">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="video-grid" id="videoGrid">
+            <div class="video-wrapper local-video">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <div class="video-placeholder" id="localPlaceholder" style="display: none;">
+                    <i class="fas fa-video-slash"></i>
+                    <p>Camera Off</p>
+                </div>
+                <div class="name-tag">You (Patient)</div>
+                <button class="size-control-btn" id="patientSizeBtn" title="Toggle Patient Video Size">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+            
+            <div class="video-wrapper remote-video" id="remoteVideoWrapper">
+                <div class="doctor-placeholder">
+                    <i class="fas fa-user-doctor"></i>
+                    <p>Dr. Smith</p>
+                    <span class="connection-status">Connected via Internet Call</span>
+                </div>
+                <div class="name-tag">Dr. Smith</div>
+                <button class="size-control-btn" id="doctorSizeBtn" title="Toggle Doctor Video Size">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-container">
+            <div class="main-controls">
+                <button class="control-btn" id="micBtn" title="Toggle Microphone">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button class="control-btn" id="videoBtn" title="Toggle Camera">
+                    <i class="fas fa-video"></i>
+                </button>
+                <button class="control-btn" id="screenShareBtn" title="Share Screen">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <button class="control-btn" id="chatBtn" title="Toggle Chat">
+                    <i class="fas fa-comment"></i>
+                </button>
+                <button class="control-btn end-call" id="endCallBtn" title="End Call">
+                    <i class="fas fa-phone-slash"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Panel -->
+        <div class="bottom-panel minimized" id="bottomPanel">
+            <div class="chat-section">
+                <div class="chat-header">
+                    <h3><i class="fas fa-comments"></i> Chat with Doctor</h3>
+                    <button class="chat-toggle-btn" id="chatToggleBtn">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message received">
+                        <span class="message-sender">Dr. Smith</span>
+                        <span class="message-text">Hello! I'm Dr. Smith. How are you feeling today? Please describe your symptoms in detail.</span>
+                    </div>
+                </div>
+                <form class="chat-input" id="chatForm">
+                    <input type="text" id="messageInput" placeholder="Describe your symptoms...">
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="fvc.js"></script>
+</body>
+</html>
