@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.className = 'fas fa-brain';
         messageContent.appendChild(icon);
         const text = document.createElement('p');
-        text.textContent = "Hello! I'm ChinIQ, your smart medical companion. Ask me anything about your health — I'm here to help.";
+        text.textContent = "Hello! I'm ClinIQ, your smart medical companion. Ask me anything about your health — I'm here to help.";
         messageContent.appendChild(text);
         messageDiv.appendChild(messageContent);
         chatMessages.appendChild(messageDiv);
