@@ -4,6 +4,9 @@
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00F5FF&center=true&vCenter=true&width=500&lines=Your+Personal+AI+Doctor.;Accessible+Anytime+Anywhere.;Futuristic+Health+Support+for+Everyone." alt="Typing SVG" />
 </p>
+<p align="center">
+  <a href="https://onedrive.live.com/personal/f46d3db043c3ae61/_layouts/15/Doc.aspx?sourcedoc=%7B7f308829-cc66-4e9e-86f4-0cfaac1eeada%7D&action=default&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9mNDZkM2RiMDQzYzNhZTYxL0VTbUlNSDlteko1T2h2UU0tcXdlNnRvQnRtNmRiaUk2VlhUQW5EQXVhSTExdnc_ZT1FV2VGU3E&slrid=f618b1a1-a0a3-5000-89d7-60f2c5ab3588&originalPath=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9mNDZkM2RiMDQzYzNhZTYxL0VTbUlNSDlteko1T2h2UU0tcXdlNnRvQnRtNmRiaUk2VlhUQW5EQXVhSTExdnc_cnRpbWU9SDFVOThsM0IzVWc&CID=2322b6e0-8765-421c-97e7-4d4d1ce9eb35&_SRM=0:G:38" target="_blank"><strong>Healthcare Kiosk documentation→</strong></a>
+</p>
 
 <p align="center">
   <a href="https://shikhar28-web.github.io/CLINIQ/" target="_blank"><strong>🌐 Live Demo: Visit CLINiQ Kiosk →</strong></a>
