@@ -1,9 +1,6 @@
 <h1 align="center">🤖 CLINiQ – AI-Powered Healthcare Kiosk</h1>
 
-<p align="center">
-  <img src="logocut.png" alt="CLINiQ Banner" height="200px" width="200px"/>
-</p>
-
+\
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00F5FF&center=true&vCenter=true&width=500&lines=Your+Personal+AI+Doctor.;Accessible+Anytime+Anywhere.;Futuristic+Health+Support+for+Everyone." alt="Typing SVG" />
 </p>
